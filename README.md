@@ -1,6 +1,6 @@
 TokenBal
 ========
 
-TokenBal is a thing and you need to respect that.
+TokenBal is my first bukkit plugin to run without crashing. (Mostly)
 
-It's also my first (kinda) successful Bukkit plugin.
+The goal of this plugin is to convert specially-signed paper slips into virtual currency automagically.
