@@ -115,58 +115,10 @@ public final class TokenBal extends JavaPlugin{
 //            getLogger().info("Action recognised");
 //            if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 //                getLogger().info("Action verified as RCLICK(Any type)");
-//                if (i == Material.PAPER) {
-//                    getLogger().info("Material is PAPER");
-//                    if (hasLore && hasDisplayName) {
-//                        getLogger().info("Has LORE and DISPNAME");
-//                        if (displayName == "§4IOU") {
-//                            getLogger().info("Display Name is VALID");
-//                            if (lore.get(0) == "§7$50") {
-//                                event.getItem().setType(null);
-//                                econ.depositPlayer(player, 50);
-//                            } else if (lore.get(0) == "§7$206.25") {
-//                                event.getItem().setType(null);
-//                                econ.depositPlayer(player, 206.25);
-//                            } else if (lore.get(0) == "§7$506.25") {
-//                                event.getItem().setType(null);
-//                                econ.depositPlayer(player, 506.25);
-//                            }
-//                        }
-//                    }
-//                }
+//                
+//                -->INSERT CODE FROM 'MATERIAL.PAPER' CHECK<--
+//
 //            }
 //        }
-//    }
-//
-//    @EventHandler
-//    public void onPlayerInvClick(InventoryClickEvent event){
-//        final Player player = (Player)event.getWhoClicked();
-//        final Inventory inv = player.getInventory();
-//        new BukkitRunnable(){
-//            public void run(){
-//                for(int i = 0; i <= inv.getSize(); i++){
-//                    if(inv.getItem(i) != null){
-//                        ItemStack itemStack = inv.getItem(i);
-//                        ItemStack is = inv.getItem(i);
-//                        Material item = inv.getItem(i).getType();
-//                        if (item == Material.PAPER) {
-//                            if (getLore(itemStack) != null) {
-//                                Object[] lore = getLore(itemStack);
-//                                if (lore[1] == "§7$50") {
-//                                    inv.removeItem(itemStack);
-//                                    econ.depositPlayer(player, 50);  
-//                                } else if (lore[1] == "§7$206.25") {
-//                                    inv.removeItem(itemStack);
-//                                    econ.depositPlayer(player, 206.25);
-//                                } else if (lore[1] == "§7$506.25") {
-//                                    inv.removeItem(itemStack);
-//                                    econ.depositPlayer(player, 506.25);
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }.runTaskLater(this, 5);
 //    }
 }
