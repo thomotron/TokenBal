@@ -33,7 +33,6 @@ public final class TokenBal extends JavaPlugin{
             if (cmd.getName().equalsIgnoreCase("tb")) {
                 //<editor-fold defaultstate="collapsed" desc="Declarations">
                 final Player player =  (Player) sender;
-                final OfflinePlayer ecoPlayer = (OfflinePlayer) player;
                 Material i = player.getItemInHand().getType();
                 int count = player.getItemInHand().getAmount();
                 boolean hasLore = player.getItemInHand().getItemMeta().hasLore();
@@ -52,17 +51,17 @@ public final class TokenBal extends JavaPlugin{
                     getLogger().info(displayName);
                     //</editor-fold>
                     if (i == Material.PAPER) {
-                        getLogger().info("Material is PAPER");
+                        getLogger().info("Material is PAPER"); //Debug
                         if (hasLore && hasDisplayName) {
-                            getLogger().info("Has LORE and DISPNAME");
+                            getLogger().info("Has LORE and DISPNAME"); //Debug
                             if ("IOU4IOU".equals(displayName)) {
-                                getLogger().info("Display Name is VALID");
+                                getLogger().info("Display Name is VALID"); //Debug
                                 if (lore.contains("t1")) {
-                                    getLogger().info("Got Loretype TYPE 1");
+                                    getLogger().info("Got Loretype TYPE 1"); //Debug
                                     player.setItemInHand(null);
-                                    getLogger().info("Item DELETED");
-                                    EconomyResponse r = econ.bankDeposit(player.getName(), 50);
-                                    getLogger().info("Variable SET");
+                                    getLogger().info("Item DELETED"); //Debug
+                                    EconomyResponse r = econ.depositPlayer(player, 50*count);
+                                    getLogger().info("Variable SET"); //Debug
                                     if (r.transactionSuccess()) {
                                         player.sendMessage("You have redeemed $" + 50*count);
                                     }
@@ -102,17 +101,9 @@ public final class TokenBal extends JavaPlugin{
         return false;
     }
     
-//    public Object[] getLore(ItemStack is){
-//        ItemMeta m = is.getItemMeta();
-//        if(m.getLore() != null){
-//            return m.getLore().toArray();
-//        }else{
-//            return null;
-//        }
-//    }
-    
-    
-    
+//OLD CODE THAT IM TOO AFRAID TO DELETE.
+//IM A HOARDER LIKE THAT.
+//
 //    public final class handListener implements Listener {
 //        @EventHandler
 //        public void onInteract(PlayerInteractEvent event) {                 
