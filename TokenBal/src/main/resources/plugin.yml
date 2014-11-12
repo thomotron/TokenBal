@@ -1,0 +1,10 @@
+name: TokenBal
+main: com.gmail.gigatech55.tokenbal.TokenBal
+version: 1.0
+depend: [Vault]
+commands:
+   tb:
+      description: Displays help for TokenBal
+      usage: /tb
+      permission: tokenbal.help
+      permission-message: You don't have sufficient permissions to perform this action.
