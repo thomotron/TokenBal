@@ -1,6 +1,5 @@
 package com.gmail.gigatech55.tokenbal;
 
-import java.security.Permission;
 import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -9,8 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.plugin.RegisteredServiceProvider;
 
 public final class TokenBal extends JavaPlugin{
     @Override
@@ -117,7 +114,7 @@ public final class TokenBal extends JavaPlugin{
 //            //</editor-fold>
 //            getLogger().info("Action recognised");
 //            if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-//                getLogger().info("Action verified as RCLICK");
+//                getLogger().info("Action verified as RCLICK(Any type)");
 //                if (i == Material.PAPER) {
 //                    getLogger().info("Material is PAPER");
 //                    if (hasLore && hasDisplayName) {
@@ -140,7 +137,7 @@ public final class TokenBal extends JavaPlugin{
 //            }
 //        }
 //    }
-    
+//
 //    @EventHandler
 //    public void onPlayerInvClick(InventoryClickEvent event){
 //        final Player player = (Player)event.getWhoClicked();
