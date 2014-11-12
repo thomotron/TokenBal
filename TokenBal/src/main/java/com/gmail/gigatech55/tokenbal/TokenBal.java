@@ -15,19 +15,17 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 public final class TokenBal extends JavaPlugin{
     @Override
     public void onEnable() {
-        getLogger().info("itemToBal is doing a thing!");
+        getLogger().info("TokenBal hasn't destroyed your server (yet)!");
     }
     
     @Override
     public void onDisable() {
-        getLogger().info("itemToBal is no longer doing a thing!");
+        getLogger().info("Err... Why, may I ask?");
     }
     
-    Economy econ = null;
-    RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-    if (economyProvider != null) {
-        econ = economyProvider.getProvider();
-    }
+    //START STATIC VAR DECS
+    static Economy econ = null;
+    //END STATIC VAR DECS
     
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
