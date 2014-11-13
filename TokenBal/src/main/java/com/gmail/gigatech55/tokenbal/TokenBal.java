@@ -48,39 +48,28 @@ public final class TokenBal extends JavaPlugin{
                     getLogger().info(displayName);
                     //</editor-fold>
                     if (i == Material.PAPER) {
-                        getLogger().info("Material is PAPER"); //Debug
                         if (hasLore && hasDisplayName) {
-                            getLogger().info("Has LORE and DISPNAME"); //Debug
                             if ("IOU4IOU".equals(displayName)) {
-                                getLogger().info("Display Name is VALID"); //Debug
                                 if (lore.contains("t1")) {
-                                    getLogger().info("Got Loretype TYPE 1"); //Debug
                                     player.setItemInHand(null);
-                                    getLogger().info("Item DELETED"); //Debug
                                     EconomyResponse r = econ.depositPlayer(player, 50*count);
-                                    getLogger().info("Variable SET"); //Debug
                                     if (r.transactionSuccess()) {
                                         player.sendMessage("You have redeemed $" + 50*count);
                                     }
-                                        return true;
-                                }
-                                if (lore.contains("t2")) {
+                                } else if (lore.contains("t2")) {
                                     getLogger().info("Got Loretype TYPE 2");
                                     player.setItemInHand(null);
                                     EconomyResponse r = econ.depositPlayer(player, 206.25*count);
                                     if (r.transactionSuccess()) {
                                         player.sendMessage("You have redeemed $" + 206.25*count);
                                     }
-                                    return true;
-                                }
-                                if (lore.contains("t3")) {
+                                } else if (lore.contains("t3")) {
                                     getLogger().info("Got Loretype TYPE 3");
                                     player.setItemInHand(null);
                                     EconomyResponse r = econ.depositPlayer(player, 506.25*count);
                                     if (r.transactionSuccess()) {
                                         player.sendMessage("You have redeemed $" + 506.25*count);
                                     }
-                                    return true;
                                 }
                             } else {
                             }
