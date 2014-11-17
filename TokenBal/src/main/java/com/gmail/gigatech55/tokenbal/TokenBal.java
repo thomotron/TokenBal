@@ -49,12 +49,13 @@ public final class TokenBal extends JavaPlugin{
                     String lore = (String) rawLore.get(0);
                     String rawDisplayName = player.getItemInHand().getItemMeta().getDisplayName();
                     String displayName = rawDisplayName.replaceAll("§","");
-
+                //</editor-fold>
+                //<editor-fold defaultstate="collapsed" desc="Debug">
                     getLogger().info(rawLore.get(0));
                     getLogger().info(lore);
                     getLogger().info(rawDisplayName);
                     getLogger().info(displayName);
-                    //</editor-fold>
+                //</editor-fold>
                     if (item == Material.PAPER) {
                         if (hasLore && hasDisplayName) {
                             if ("IOU4IOU".equals(displayName)) {
