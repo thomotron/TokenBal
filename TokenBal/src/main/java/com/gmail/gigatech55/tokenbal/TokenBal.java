@@ -27,7 +27,7 @@ public final class TokenBal extends JavaPlugin{
     public double getTokenAmt(String meta) {
         String stringMeta = (String) meta.replaceAll("§","");
         stringMeta = stringMeta.replace("v","");
-        stringMeta = stringMeta.replace("8","");
+        stringMeta = stringMeta.replace("7","");
         stringMeta = stringMeta.replace("$","");
         Double amount = parseDouble(stringMeta);
         return amount;
