@@ -1,5 +1,6 @@
 package com.gmail.gigatech55.tokenbal;
 
+import static java.lang.Double.parseDouble;
 import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -22,6 +23,15 @@ public final class TokenBal extends JavaPlugin{
     
     //START STATIC VAR DECS
     static Economy econ = null;
+    
+    public double getTokenAmt(String meta) {
+        String stringMeta = (String) meta.replaceAll("§","");
+        stringMeta = stringMeta.replace("v","");
+        stringMeta = stringMeta.replace("8","");
+        stringMeta = stringMeta.replace("$","");
+        Double amount = parseDouble(stringMeta);
+        return amount;
+    }
     //END STATIC VAR DECS
     
     @Override
@@ -30,47 +40,28 @@ public final class TokenBal extends JavaPlugin{
             if (cmd.getName().equalsIgnoreCase("tb")) {
                 //<editor-fold defaultstate="collapsed" desc="Declarations">
                 final Player player =  (Player) sender;
-                Material i = player.getItemInHand().getType();
+                Material item = player.getItemInHand().getType();
                 int count = player.getItemInHand().getAmount();
                 boolean hasLore = player.getItemInHand().getItemMeta().hasLore();
                 boolean hasDisplayName = player.getItemInHand().getItemMeta().hasDisplayName();
                 if (hasLore && hasDisplayName) {
                     List<String> rawLore = player.getItemInHand().getItemMeta().getLore();
-                    String stringLore = (String) rawLore.get(0);
-                    String lore = stringLore.replaceAll("§","");
+                    String lore = (String) rawLore.get(0);
                     String rawDisplayName = player.getItemInHand().getItemMeta().getDisplayName();
                     String displayName = rawDisplayName.replaceAll("§","");
 
                     getLogger().info(rawLore.get(0));
-                    getLogger().info(stringLore);
                     getLogger().info(lore);
                     getLogger().info(rawDisplayName);
                     getLogger().info(displayName);
                     //</editor-fold>
-                    if (i == Material.PAPER) {
+                    if (item == Material.PAPER) {
                         if (hasLore && hasDisplayName) {
                             if ("IOU4IOU".equals(displayName)) {
-                                if (lore.contains("t1")) {
-                                    player.setItemInHand(null);
-                                    EconomyResponse r = econ.depositPlayer(player, 50*count);
-                                    if (r.transactionSuccess()) {
-                                        player.sendMessage("You have redeemed $" + 50*count);
-                                    }
-                                } else if (lore.contains("t2")) {
-                                    getLogger().info("Got Loretype TYPE 2");
-                                    player.setItemInHand(null);
-                                    EconomyResponse r = econ.depositPlayer(player, 206.25*count);
-                                    if (r.transactionSuccess()) {
-                                        player.sendMessage("You have redeemed $" + 206.25*count);
-                                    }
-                                } else if (lore.contains("t3")) {
-                                    getLogger().info("Got Loretype TYPE 3");
-                                    player.setItemInHand(null);
-                                    EconomyResponse r = econ.depositPlayer(player, 506.25*count);
-                                    if (r.transactionSuccess()) {
-                                        player.sendMessage("You have redeemed $" + 506.25*count);
-                                    }
+                                for (int i = count; i < 1; i--) {
+                                    econ.depositPlayer(player,getTokenAmt(lore));
                                 }
+                                player.sendMessage("§a$" + getTokenAmt(lore)*count + " §chas been added to your account automagically.");
                             } else {
                             }
                         }
