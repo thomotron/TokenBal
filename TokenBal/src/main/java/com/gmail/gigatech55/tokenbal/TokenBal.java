@@ -17,7 +17,7 @@ public final class TokenBal extends JavaPlugin{
     
     @Override
     public void onDisable() {
-        getLogger().info("Err... Why, may I ask?");
+        getLogger().info("Whoops.");
     }
     
     //START STATIC VAR DECS
