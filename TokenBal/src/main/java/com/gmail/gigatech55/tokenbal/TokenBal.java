@@ -62,7 +62,6 @@ public final class TokenBal extends JavaPlugin{
                                     econ.depositPlayer(player,getTokenAmt(lore));
                                 }
                                 player.sendMessage("§a$" + getTokenAmt(lore)*count + " §chas been added to your account automagically.");
-                            } else {
                             }
                         }
                     }
