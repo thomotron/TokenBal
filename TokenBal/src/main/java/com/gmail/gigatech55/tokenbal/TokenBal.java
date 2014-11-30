@@ -2,26 +2,45 @@ package com.gmail.gigatech55.tokenbal;
 
 import static java.lang.Double.parseDouble;
 import java.util.List;
+import java.util.logging.Logger;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
 public final class TokenBal extends JavaPlugin{
+    
     @Override
     public void onEnable() {
-        getLogger().info("TokenBal hasn't destroyed your server (yet)!");
+        if (!setupEconomy() ) {
+            log.severe(String.format("[%s] - TokenBal requires Vault to function!", getDescription().getName()));
+            getServer().getPluginManager().disablePlugin(this);
+        }
     }
-    
+
     @Override
     public void onDisable() {
         getLogger().info("Whoops.");
     }
     
-    //START STATIC VAR DECS
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return econ != null;
+    }
+    
+    //START VAR DECS
     static Economy econ = null;
+    private static final Logger log = Logger.getLogger("Minecraft");
     
     public double getTokenAmt(String meta) {
         String stringMeta = (String) meta.replaceAll("§","");
@@ -31,7 +50,7 @@ public final class TokenBal extends JavaPlugin{
         Double amount = parseDouble(stringMeta);
         return amount;
     }
-    //END STATIC VAR DECS
+    //END VAR DECS
     
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -61,7 +80,7 @@ public final class TokenBal extends JavaPlugin{
                                 for (int i = count; i < 1; i--) {
                                     econ.depositPlayer(player,getTokenAmt(lore));
                                 }
-                                player.sendMessage("§a$" + getTokenAmt(lore)*count + " §chas been added to your account automagically.");
+                                player.sendMessage("§c$" + getTokenAmt(lore)*count + " §ahas been added to your account automagically.");
                             }
                         }
                     }
