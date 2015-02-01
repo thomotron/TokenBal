@@ -1,6 +1,6 @@
 TokenBal
 ========
 
-TokenBal is my first bukkit plugin that was stable at first run.
+TokenBal is a plugin for Bukkit, a modified Minecraft server package.
 
-The goal of this plugin is to convert specially-signed paper slips into virtual currency automagically.
+The goal of TokenBal is to convert specially-signed paper slips into virtual currency with only a few keystrokes.
