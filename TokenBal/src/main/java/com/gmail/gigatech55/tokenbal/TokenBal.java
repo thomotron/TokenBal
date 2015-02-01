@@ -38,7 +38,7 @@ public final class TokenBal extends JavaPlugin{
         return econ != null;
     }
     
-    //START VAR DECS
+    //START DECS
     static Economy econ = null;
     private static final Logger log = Logger.getLogger("Minecraft");
     
@@ -50,12 +50,12 @@ public final class TokenBal extends JavaPlugin{
         Double amount = parseDouble(stringMeta);
         return amount;
     }
-    //END VAR DECS
+    //END DECS
     
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 0) {
-            if (cmd.getName().equalsIgnoreCase("tb")) {
+            if (cmd.getName().equalsIgnoreCase("token") || cmd.getName().equalsIgnoreCase("tok") || cmd.getName().equalsIgnoreCase("tk")) {
                 //<editor-fold defaultstate="collapsed" desc="Declarations">
                 final Player player =  (Player) sender;
                 Material item = player.getItemInHand().getType();
@@ -80,7 +80,7 @@ public final class TokenBal extends JavaPlugin{
                                 for (int i = count; i < 1; i--) {
                                     econ.depositPlayer(player,getTokenAmt(lore));
                                 }
-                                player.sendMessage("§c$" + getTokenAmt(lore)*count + " §ahas been added to your account automagically.");
+                                player.sendMessage("§a$" + getTokenAmt(lore)*count + " §chas been added to your account automagically.");
                             }
                         }
                     }
